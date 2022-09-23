@@ -46,19 +46,21 @@ class step:
     # cleanup
     """
     def __init__(self, img=None, scrollable=False, pre = None, script= None, timeout=90):
+        #ToDo: init with load file
         self._img = img
         self._scroll = scrollable
         # test if image path is valid, if not raise ValueError and do not construct an object
         self._pre_script = pre
         self.found_loc = None #1st image found location
         if script==None:
+            # Default script parameter if step instance is just created
             self._script = 'loc=[[0,0]]\r\nif self.found_loc==None:\r\n    print("  Image Not Found")\r\nelse:\r\n    print("  Image Found @: "+str(self.found_loc))'
         else:
             self._script = script
         self._flags = [False,False,False,False] #mark,show,mark,quit
         self.timeout = timeout
         self.markers = []
-        self.params = {}
+        self.params = {} # Default parameters defined in PNG
             
     def _reset_mark(self):
         self._flags[0] = True
@@ -210,6 +212,10 @@ class step:
         self._img.show()
 
 class workflow:
+    # ToDo: Pickup Function
+    # ToDo: Save/Load - every step params should be saved
+    # ToDo: TmpFolder - when script is ran, temp folder is generated and once finished if empty deleted
+    # ToDo: Local Stored Parameters???
     def __init__(self):
         self.steps = []
         self._current_step = 0
@@ -226,13 +232,7 @@ class workflow:
             except Exception as e:
                 print(e)
     #workflow->step
-    
-    # pciture to find
-    # timeout
-    # data list
-    # record nr
-    # python code if picture is found
-    # python code if picture is not found
+
 
 class multiselect:  
     def __init__(self, items, header=None, footer=None, q='', default_answ=None, width=72):
