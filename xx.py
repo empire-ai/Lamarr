@@ -77,10 +77,10 @@ class step:
     def capture(self):
         print("Capture images and (input) positions for step construction")
         print("[alt]  - mark image corner (top left to right bottom)")
-        # ToDo: add recapture image option
+        # ToDo: add recapture image option - done??
         print("[w]    - show captured image")
         print("[m]    - add click or input marker, print variable as string")
-        # ToDo: update marker with multiselect
+        # ToDo: update marker with multiselect - needs explaination??
         print("[q]    - stop capture")
         
         hkey_0 = keyboard.add_hotkey('alt', self._reset_mark)
